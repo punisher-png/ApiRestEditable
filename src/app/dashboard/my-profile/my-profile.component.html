@@ -1,0 +1,23 @@
+<ng-container *ngIf="sessionService.user$ | async">
+  <h1 class="mb-5">{{ (sessionService.user$ | async)?.fullName }}</h1>
+  <div class="grid">
+    <div class="col-8">
+      <form class="flex flex-column" [formGroup]="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="first_name" type="text" matInput placeholder="Complete con el nombre">
+          <mat-icon matSuffix>user</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input formControlName="last_name" type="text" matInput placeholder="Complete con el apellido">
+          <mat-icon matSuffix>user</mat-icon>
+        </mat-form-field>
+      </form>
+      <button (click)="onSubmit()" type="submit" mat-raised-button color="primary">Guardar</button>
+    </div>
+    <div class="col-4">
+      <img [src]="(sessionService.user$ | async)?.avatar" alt="" srcset="">
+    </div>
+  </div>
+</ng-container>

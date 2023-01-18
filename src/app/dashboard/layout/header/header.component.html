@@ -1,0 +1,13 @@
+
+
+<mat-toolbar class="flex align-items-center justify-content-between" color="primary">
+  <button type="button" mat-icon-button (click)="toggleSidebar.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <b style="cursor: pointer;" *ngIf="user;else templateName" routerLink="my-profile">
+    AUTENTICADO: {{ user.fullName }}
+  </b>
+  <ng-template #templateName>
+    <button routerLink="/auth/login" mat-flat-button color="primary">Iniciar sesión</button>
+  </ng-template>
+</mat-toolbar>
